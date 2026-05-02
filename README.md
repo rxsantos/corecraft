@@ -1,0 +1,2 @@
+# corecraft
+CoreCraft - Bitcoin Coders
