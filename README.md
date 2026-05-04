@@ -18,6 +18,7 @@ mkdir -p ~/$HOME/bitcoin_node2
 ```
 
 **Sistema Utilizado:** macOS Tahoe 26.3.1.
+
 **Software:** Bitcoin Core (bitcoind) baixado de [https://bitcoin.org/en/download](https://bitcoin.org/en/download)
 
 # Atividade-1
