@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitcoin Dashboard</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #38bdf8;
+    }
+
+    .stat {
+      font-size: 28px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .bar {
+      height: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .low { background: #22c55e; }
+    .medium { background: #facc15; }
+    .high { background: #ef4444; }
+
+  </style>
+</head>
+<body>
+
+<h1>Bitcoin Node Dashboard</h1>
+
+<div class="grid">
+
+  <!-- MEMPOOL -->
+  <div class="card">
+    <h2>Mempool Intelligence</h2>
+
+    <div class="label">Total de transações</div>
+    <div class="stat" id="txCount">-</div>
+
+    <div class="label">Fee média (sat/vB)</div>
+    <div class="stat" id="avgFee">-</div>
+
+    <div class="label">Distribuição</div>
+
+    <div class="row">
+      <span>Low</span>
+      <span id="lowCount">-</span>
+    </div>
+    <div class="bar low" id="lowBar"></div>
+
+    <div class="row">
+      <span>Medium</span>
+      <span id="mediumCount">-</span>
+    </div>
+    <div class="bar medium" id="mediumBar"></div>
+
+    <div class="row">
+      <span>High</span>
+      <span id="highCount">-</span>
+    </div>
+    <div class="bar high" id="highBar"></div>
+
+  </div>
+
+  <!-- BLOCKCHAIN -->
+  <div class="card">
+    <h2>⏱ Node Sync Status</h2>
+
+    <div class="label">Blocks</div>
+    <div class="stat" id="blocks">-</div>
+
+    <div class="label">Headers</div>
+    <div class="stat" id="headers">-</div>
+
+    <div class="label">Lag</div>
+    <div class="stat" id="lag">-</div>
+  </div>
+
+</div>
+
+<script>
+async function loadData() {
+  try {
+    // MEMPOOL
+    const mempool = await fetch('/api/mempool/summary').then(r => r.json())
+
+    document.getElementById('txCount').innerText = mempool.tx_count
+    document.getElementById('avgFee').innerText = mempool.avg_fee_rate.toFixed(0)
+
+    const total = mempool.tx_count
+
+    const low = mempool.fee_distribution.low
+    const medium = mempool.fee_distribution.medium
+    const high = mempool.fee_distribution.high
+
+    document.getElementById('lowCount').innerText = low
+    document.getElementById('mediumCount').innerText = medium
+    document.getElementById('highCount').innerText = high
+
+    document.getElementById('lowBar').style.width = (low / total * 100) + '%'
+    document.getElementById('mediumBar').style.width = (medium / total * 100) + '%'
+    document.getElementById('highBar').style.width = (high / total * 100) + '%'
+
+
+    // BLOCKCHAIN
+    const blockchain = await fetch('/api/blockchain/lag').then(r => r.json())
+
+    document.getElementById('blocks').innerText = blockchain.blocks
+    document.getElementById('headers').innerText = blockchain.headers
+    document.getElementById('lag').innerText = blockchain.lag
+
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+// atualiza a cada 5 segundos
+setInterval(loadData, 5000)
+loadData()
+</script>
+
+</body>
+</html>

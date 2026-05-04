@@ -1,4 +1,4 @@
-# CoreCoders: Guia de Atividades Bitcoin Core & Golang
+# CoreCoders: Integrando Bitcoin Core com Golang
 Este repositório contém os roteiros práticos para a execução das atividades 1 a 3 do Treinamento CoreCoders do Bitcoin Coders. O objetivo é preparar um ambiente de desenvolvimento Bitcoin Core em modo **Regtest**, configurar múltiplos nodes e integrar esses dados utilizando **Golang**.
 
 ---
@@ -138,3 +138,5 @@ cd atividade-2 && go run main.go
 # Atividade 3
 cd atividade-3 && go run main.go
 ```
+
+# Capturas de Telas
