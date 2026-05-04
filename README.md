@@ -17,9 +17,9 @@ mkdir -p ~/$HOME/bitcoin_node1
 mkdir -p ~/$HOME/bitcoin_node2
 ```
 
-> **Sistema Utilizado:** macOS Tahoe 26.3.1.
+&nbsp;&nbsp;&nbsp;&nbsp;**Sistema Utilizado:** macOS Tahoe 26.3.1.
 
-> **Software:** Bitcoin Core (bitcoind) baixado de [https://bitcoin.org/en/download](https://bitcoin.org/en/download)
+&nbsp;&nbsp;&nbsp;&nbsp;**Software:** Bitcoin Core (bitcoind) baixado de [https://bitcoin.org/en/download](https://bitcoin.org/en/download)
 
 # Atividade-1
 ## Passo 1: Configuração do bitcoin.conf
