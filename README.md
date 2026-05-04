@@ -148,3 +148,5 @@ cd atividade-3 && go run main.go
 ![API Memppol Summary](./atividade-1/images/api_ativididade_1_mempool_vazia.png)
 ## API - Snapshot Inteligente - Blockchain
 ![API BlockChain Lag](./atividade-1/images/api_atividade_1_blockchain.png)
+## API - Snapshot Inteligente - Blockchain Lag
+![API BlockChain Lag](./atividade-1/images/api_atividade_1_blockchain_lag.png)
