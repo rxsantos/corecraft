@@ -6,7 +6,7 @@ Este repositório contém os roteiros práticos para a execução das atividades
 ## Preparação do Ambiente
 Primeiro, clone o repositório base e acesse a pasta do projeto:
 ```bash
-git clone [https://github.com/rxsantos/corecraft](https://github.com/rxsantos/corecraft)
+git clone https://github.com/rxsantos/corecraft
 cd corecraft
 ```
 
@@ -27,7 +27,8 @@ Crie os arquivos de configuração para que os nodes operem em portas diferentes
 ## Node1
 **Local:** $HOME/bitcoin_node1/bitcoin.conf
 
-toml
+```toml
+
 regtest=1
 fallbackfee=0.0001
 
@@ -41,11 +42,13 @@ rpcpassword=teste
 
 zmqpubrawtx=tcp://127.0.0.1:38330
 zmqpubrawblock=tcp://127.0.0.1:38331
+```
 
 ## Node2
 **Local:** $HOME/bitcoin_node2/bitcoin.conf
 
-toml
+```toml
+
 regtest=1
 fallbackfee=0.0001
 
@@ -59,7 +62,7 @@ rpcpassword=teste
 
 zmqpubrawtx=tcp://127.0.0.1:38332
 zmqpubrawblock=tcp://127.0.0.1:38333
-
+```
 
 ## Passo 2: Execução e Atalhos
 
